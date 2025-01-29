@@ -1,6 +1,6 @@
 import { checkHash, hash } from '@/lib/hash';
 import { createAuthToken } from '@/lib/jwt';
-import { IUser, UserRole } from '@/types/auth';
+import { IUser, UserRole } from '@/types';
 import mongoose from 'mongoose';
 
 const UserSchema = new mongoose.Schema<IUser>(

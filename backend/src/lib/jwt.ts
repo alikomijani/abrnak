@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { AuthTokens, UserRole } from '@/types/auth';
+import { AuthTokens, UserRole } from '@/types';
 import type { JwtPayload } from 'jsonwebtoken';
 import {
   JsonWebTokenError,
@@ -17,7 +17,6 @@ type TokenPayload = JwtPayload & {
 };
 
 export function createAuthToken(payload: TokenPayload): AuthTokens {
-  console.log(ACCESS_SECRET_KEY, REFRESH_SECRET_KEY);
   const accessToken = sign(payload, ACCESS_SECRET_KEY, { expiresIn: '1h' });
   const refreshToken = sign(payload, REFRESH_SECRET_KEY, { expiresIn: '7d' });
   return { accessToken, refreshToken };

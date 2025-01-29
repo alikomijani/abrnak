@@ -1,5 +1,5 @@
 import { UserModel } from '@/schema/auth.schema';
-import { UserRole } from '@/types/auth';
+import { UserRole } from '@/types';
 import type { UserType } from '@/validations/auth.validations';
 
 export async function createNormalUser(data: UserType) {
@@ -19,14 +19,12 @@ export async function findUserByCredentials(
   // Find the user by email
   const user = await UserModel.findOne({ email });
   if (!user) {
-    console.log('user not found');
     throw new Error('User not found');
   }
 
   // Compare the provided password with the hashed password
   const isMatch = await user.checkPassword(rowPassword);
   if (!isMatch) {
-    console.log('password found');
     throw new Error('Invalid password');
   }
 

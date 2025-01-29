@@ -1,14 +1,11 @@
-#!/usr/bin/env node
-
 /**
  * Module dependencies.
  */
-
+import 'module-alias/register';
 import app from './app';
 import debug from 'debug';
 import http from 'http';
 import 'dotenv/config';
-
 import { connectToDB } from './lib/mongoose';
 
 const debugLog = debug('myapp:server');

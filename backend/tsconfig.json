@@ -9,23 +9,25 @@
     "noImplicitAny": true,
     "strictPropertyInitialization": true,
     "moduleResolution": "node",
+    "baseUrl": ".",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "lib": ["ES2016"],
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@routes": ["./src/routes/*"],
-      "@controllers": ["./src/controllers/*"],
-      "@models": ["./src/models/*"],
-      "@lib": ["./src/lib/*"],
+      "@schema": ["src/schema/*"],
+      "@models": ["src/models/*"],
+      "@services": ["./src/services/*"],
       "@validations": ["./src/validations/*"],
       "@middlewares": ["./src/middlewares/*"],
+      "@controllers": ["./src/controllers/*"],
       "@types": ["./src/types/*"]
     }
   },
-  "exclude": ["node_modules"],
-  "include": ["./src/**/*.ts", "src/middlewares/auth.middleware.js"]
+  "typeRoots": ["./src/types/express"],
+  "exclude": ["node_modules", "build"],
+  "include": ["src/**/*.ts", "src/types/**/*.d.ts"]
 }
