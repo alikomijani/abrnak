@@ -1,0 +1,45 @@
+# 1️⃣ Use an official Node.js runtime as a base image
+FROM node:18-alpine AS builder
+
+# 2️⃣ Set working directory
+WORKDIR /app
+
+# 3️⃣ Install pnpm globally
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# 4️⃣ Copy package.json and pnpm-lock.yaml (important for pnpm!)
+COPY package.json pnpm-lock.yaml ./
+
+# 5️⃣ Install dependencies using pnpm
+RUN pnpm install --frozen-lockfile
+
+# 6️⃣ Copy the entire project into the container
+COPY . .
+
+# 7️⃣ Build the TypeScript project
+RUN pnpm run build
+
+# 8️⃣ Use a smaller final image for production
+FROM node:18-alpine
+
+WORKDIR /app
+
+# 9️⃣ Install pnpm again in the final stage
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# 🔟 Copy only the necessary files from the builder stage
+COPY --from=builder /app/package.json /app/pnpm-lock.yaml ./
+COPY --from=builder /app/build ./build
+
+# 1️⃣1️⃣ Install only production dependencies
+RUN pnpm install --frozen-lockfile --prod
+
+# 1️⃣2️⃣ Set environment variables (optional)
+ENV NODE_ENV=production
+ENV PORT=8000
+
+# 1️⃣3️⃣ Expose the application port
+EXPOSE 8000
+
+# 1️⃣4️⃣ Start the server
+CMD ["node", "build/server.js"]
