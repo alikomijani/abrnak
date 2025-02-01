@@ -1,0 +1,1093 @@
+{
+	"info": {
+		"_postman_id": "c0f3037e-c6c5-4718-a6be-29eb6a7aead9",
+		"name": "Todo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6688069",
+		"_collection_link": "https://cloudy-satellite-511532.postman.co/workspace/My-Workspace~50d9fc7b-7d21-430a-82c2-2e53d2540411/collection/6688069-c0f3037e-c6c5-4718-a6be-29eb6a7aead9?action=share&source=collection_link&creator=6688069"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"akpa123@gmail.com\",\n    \"password\":\"123456\",\n    \"firstName\":\"ali\",\n    \"lastName\":\"Komijani\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"akpa125@gmail.com\",\n    \"password\":\"123456\",\n    \"firstName\":\"ali\",\n    \"lastName\":\"Komijani\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/register",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9c-8L0KdbNv/gJ4dl7GS5+hqREmwsM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Feb 2025 19:26:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"email already exists. Please use a different email.\",\n    \"errors\": {\n        \"email\": [\n            \"email already exists. Please use a different email.\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"akpa123@gmail.com\",\n    \"password\":\"123456\",\n    \"firstName\":\"ali\",\n    \"lastName\":\"Komijani\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/register",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "666"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29a-zpZ7uDAzd/4xF4l5cDYpRP/ozJM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Feb 2025 19:26:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"tokens\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWU3NTU1OGMxN2RlMmFkYmViMDdiMyIsInJvbGUiOjEsImlhdCI6MTczODQzNzk3MywiZXhwIjoxNzM4NDQxNTczfQ.lwIyhQWS-JgfFHAHoijxJW9zlER8KgaODX9cPc8XBRE\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWU3NTU1OGMxN2RlMmFkYmViMDdiMyIsInJvbGUiOjEsImlhdCI6MTczODQzNzk3MywiZXhwIjoxNzM5MDQyNzczfQ.fbKmWdY2OnSxO4hhj87aH06oU5IZXX_02mrZCsSYbXE\"\n    },\n    \"user\": {\n        \"firstName\": \"ali\",\n        \"lastName\": \"Komijani\",\n        \"email\": \"akpa123@gmail.com\",\n        \"role\": 1,\n        \"isActive\": true,\n        \"_id\": \"679e75558c17de2adbeb07b3\",\n        \"createdAt\": \"2025-02-01T19:26:13.650Z\",\n        \"updatedAt\": \"2025-02-01T19:26:13.650Z\",\n        \"__v\": 0,\n        \"id\": \"679e75558c17de2adbeb07b3\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.status === 'OK') {",
+									"    // Parse the response JSON",
+									"    const res = pm.response.json();",
+									"    // Extract the accessToken from the nested 'tokens' object",
+									"    const token = res.tokens.accessToken;",
+									"    // Log the token to the console for debugging",
+									"    console.log(\"Access Token:\", token);",
+									"    // Set the token as a collection variable",
+									"    pm.collectionVariables.set(\"Token\", token);",
+									"} else {",
+									"    // Handle error cases",
+									"    console.error(\"Request failed with status:\", pm.response.status);",
+									"    console.error(\"Response body:\", pm.response.text());",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"akpa123@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"akpa125@gmail.com\",\n    \"password\":\"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "666"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29a-u3sdQ5cs7GIe2Qh1WW3JoxeYSOY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Feb 2025 19:24:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"tokens\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OThlZjk1NDU3OWZmZjRjZmVmMjk4OSIsInJvbGUiOjEsImlhdCI6MTczODQzNzg1OSwiZXhwIjoxNzM4NDQxNDU5fQ.JR8ZYw5dbxeL60PxgpohgnS_7ACL9pc9XnrlK6aaLos\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OThlZjk1NDU3OWZmZjRjZmVmMjk4OSIsInJvbGUiOjEsImlhdCI6MTczODQzNzg1OSwiZXhwIjoxNzM5MDQyNjU5fQ.F4XHEFQw2GwhAE_zgHEuc3JQSI5J5En6l54lJWT0Ico\"\n    },\n    \"user\": {\n        \"_id\": \"6798ef954579fff4cfef2989\",\n        \"firstName\": \"Ali\",\n        \"lastName\": \"Komijani\",\n        \"email\": \"akpa125@gmail.com\",\n        \"role\": 1,\n        \"isActive\": true,\n        \"createdAt\": \"2025-01-28T14:54:13.619Z\",\n        \"updatedAt\": \"2025-01-28T14:54:13.619Z\",\n        \"__v\": 0,\n        \"id\": \"6798ef954579fff4cfef2989\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "todo",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/todo",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"todo"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/todo",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"todo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "904"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"388-2rPRYuPdD93UrtamXHTOkjP+1yM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Feb 2025 19:49:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"results\": [\n        {\n            \"_id\": \"679e7a1d6bc63e654cc561d5\",\n            \"user\": \"6798ef954579fff4cfef2989\",\n            \"title\": \"new todo!\",\n            \"isComplete\": false,\n            \"description\": \"this is a todo\",\n            \"subTasks\": [\n                {\n                    \"title\": \"subtaks\",\n                    \"isComplete\": false,\n                    \"_id\": \"679e7a1d6bc63e654cc561d6\"\n                }\n            ],\n            \"createdAt\": \"2025-02-01T19:46:37.959Z\",\n            \"updatedAt\": \"2025-02-01T19:46:37.959Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"679e7a2bcf99acdfc2266db3\",\n            \"user\": \"6798ef954579fff4cfef2989\",\n            \"title\": \"new todo!\",\n            \"isComplete\": false,\n            \"description\": \"this is a todo\",\n            \"subTasks\": [\n                {\n                    \"title\": \"subtaks\",\n                    \"isComplete\": false,\n                    \"_id\": \"679e7a2bcf99acdfc2266db4\"\n                }\n            ],\n            \"createdAt\": \"2025-02-01T19:46:51.349Z\",\n            \"updatedAt\": \"2025-02-01T19:46:51.349Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"679e7a65cf99acdfc2266db7\",\n            \"user\": \"6798ef954579fff4cfef2989\",\n            \"title\": \"new todo!\",\n            \"isComplete\": false,\n            \"description\": \"this is a todo\",\n            \"subTasks\": [],\n            \"createdAt\": \"2025-02-01T19:47:49.905Z\",\n            \"updatedAt\": \"2025-02-01T19:47:49.905Z\",\n            \"__v\": 0\n        }\n    ],\n    \"total\": 3,\n    \"limit\": 10,\n    \"offset\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"new todo!\",\n    \"description\":\"this is a todo\",\n    \"subTasks\":[\n        {\n            \"title\":\"subtaks\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/todo",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"todo"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"new todo!\",\n    \"description\":\"this is a todo\",\n    \"subTasks\":[\n        {\n            \"title\":\"subtaks\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/todo",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"todo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "300"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12c-hxCWnwrGZp30rzn7P/fMrxr+U+8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Feb 2025 19:46:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": \"6798ef954579fff4cfef2989\",\n    \"title\": \"new todo!\",\n    \"isComplete\": false,\n    \"description\": \"this is a todo\",\n    \"subTasks\": [\n        {\n            \"title\": \"subtaks\",\n            \"isComplete\": false,\n            \"_id\": \"679e7a2bcf99acdfc2266db4\"\n        }\n    ],\n    \"createdAt\": \"2025-02-01T19:46:51.349Z\",\n    \"updatedAt\": \"2025-02-01T19:46:51.349Z\",\n    \"id\": \"679e7a2bcf99acdfc2266db3\"\n}"
+						},
+						{
+							"name": "invalid",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\":\"this is a todo\",\n    \"subTasks\":[\n        {\n            \"title\":\"subtaks\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/todo",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"todo"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-3JghgZHcB8n80DpgcOzcOxoZEbQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Feb 2025 19:47:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Invalid Data\",\n    \"errors\": {\n        \"title\": [\n            \"Required\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "without subTask",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"new todo!\",\n    \"description\":\"this is a todo\"\n \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/todo",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"todo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "229"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e5-V7bnXm30UOPU0zhiyujecqPULNQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Feb 2025 19:47:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": \"6798ef954579fff4cfef2989\",\n    \"title\": \"new todo!\",\n    \"isComplete\": false,\n    \"description\": \"this is a todo\",\n    \"subTasks\": [],\n    \"createdAt\": \"2025-02-01T19:47:49.905Z\",\n    \"updatedAt\": \"2025-02-01T19:47:49.905Z\",\n    \"id\": \"679e7a65cf99acdfc2266db7\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/todo/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"todo",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "679e7a1d6bc63e654cc561d5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/todo/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"todo",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "679e7a1d6bc63e654cc561d5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "300"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12c-FPQYUPqwEZRp5J0PAUUtkeDbtAk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Feb 2025 19:53:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": \"6798ef954579fff4cfef2989\",\n    \"title\": \"new todo!\",\n    \"isComplete\": false,\n    \"description\": \"this is a todo\",\n    \"subTasks\": [\n        {\n            \"title\": \"subtaks\",\n            \"isComplete\": false,\n            \"_id\": \"679e7a1d6bc63e654cc561d6\"\n        }\n    ],\n    \"createdAt\": \"2025-02-01T19:46:37.959Z\",\n    \"updatedAt\": \"2025-02-01T19:46:37.959Z\",\n    \"id\": \"679e7a1d6bc63e654cc561d5\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/todo/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"todo",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "679e7a65cf99acdfc2266db7"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/todo/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"todo",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "679e7a65cf99acdfc2266db7"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Feb 2025 21:03:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"new todo!\",\n    \"description\":\"this is a todo\",\n    \"subTasks\":[\n        {\n            \"title\":\"subtaks\"\n        },\n          {\n            \"title\":\"subtaks2\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/todo/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"todo",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "679e8bd929cdfd51406f5c74"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"new todo!\",\n    \"description\":\"this is a todo\",\n    \"subTasks\":[\n        {\n            \"title\":\"subtaks\"\n        },\n          {\n            \"title\":\"subtaks2\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/todo/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"todo",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "679e8bd929cdfd51406f5c74"
+										}
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "373"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"175-Kz9w1EEND8uSvn7qBq9LQSU6Wvk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Feb 2025 21:04:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": \"6798ef954579fff4cfef2989\",\n    \"title\": \"new todo!\",\n    \"isComplete\": false,\n    \"description\": \"this is a todo\",\n    \"subTasks\": [\n        {\n            \"title\": \"subtaks\",\n            \"isComplete\": false,\n            \"_id\": \"679e8c7aee4695c991b83c61\"\n        },\n        {\n            \"title\": \"subtaks2\",\n            \"isComplete\": false,\n            \"_id\": \"679e8c7aee4695c991b83c62\"\n        }\n    ],\n    \"createdAt\": \"2025-02-01T21:02:17.611Z\",\n    \"updatedAt\": \"2025-02-01T21:04:58.218Z\",\n    \"id\": \"679e8bd929cdfd51406f5c74\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Task Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"isComplete\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/todo/:id/update-status",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"todo",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "679e8bd929cdfd51406f5c74"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"isComplete\":true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/todo/:id/update-status",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"todo",
+										":id",
+										"update-status"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "679e8bd929cdfd51406f5c74"
+										}
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "372"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"174-aPpknTeI+a/FngDElQwAx0byKRM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Feb 2025 21:32:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": \"6798ef954579fff4cfef2989\",\n    \"title\": \"new todo!\",\n    \"isComplete\": true,\n    \"description\": \"this is a todo\",\n    \"subTasks\": [\n        {\n            \"title\": \"subtaks\",\n            \"isComplete\": false,\n            \"_id\": \"679e8c7aee4695c991b83c61\"\n        },\n        {\n            \"title\": \"subtaks2\",\n            \"isComplete\": false,\n            \"_id\": \"679e8c7aee4695c991b83c62\"\n        }\n    ],\n    \"createdAt\": \"2025-02-01T21:02:17.611Z\",\n    \"updatedAt\": \"2025-02-01T21:32:13.068Z\",\n    \"id\": \"679e8bd929cdfd51406f5c74\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update SubTaks Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"isComplete\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/todo/:id/update-sub-status/:subId",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"todo",
+								":id",
+								"update-sub-status",
+								":subId"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "679e8bd929cdfd51406f5c74"
+								},
+								{
+									"key": "subId",
+									"value": "679e8c7aee4695c991b83c61"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"isComplete\":true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/todo/:id/update-status",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"todo",
+										":id",
+										"update-status"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "679e8bd929cdfd51406f5c74"
+										}
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "372"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"174-aPpknTeI+a/FngDElQwAx0byKRM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Feb 2025 21:32:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": \"6798ef954579fff4cfef2989\",\n    \"title\": \"new todo!\",\n    \"isComplete\": true,\n    \"description\": \"this is a todo\",\n    \"subTasks\": [\n        {\n            \"title\": \"subtaks\",\n            \"isComplete\": false,\n            \"_id\": \"679e8c7aee4695c991b83c61\"\n        },\n        {\n            \"title\": \"subtaks2\",\n            \"isComplete\": false,\n            \"_id\": \"679e8c7aee4695c991b83c62\"\n        }\n    ],\n    \"createdAt\": \"2025-02-01T21:02:17.611Z\",\n    \"updatedAt\": \"2025-02-01T21:32:13.068Z\",\n    \"id\": \"679e8bd929cdfd51406f5c74\"\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{Token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "Token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
