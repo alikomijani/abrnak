@@ -23,7 +23,8 @@ export const authMiddleware = async (
       role: decodedToken.role,
     };
     next();
-  } catch {
+  } catch (e) {
+    console.log(e);
     res.status(StatusCodes.UNAUTHORIZED).json({
       success: false,
       message: 'Error! Token is invalid.',

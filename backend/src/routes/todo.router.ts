@@ -1,11 +1,23 @@
-import { createTodoHttp, getTodoList } from '@/controllers/todo.controllers';
-import { authMiddleware } from '@/middlewares/auth.middleware';
+import {
+  createTodoHttp,
+  deleteTodoHttp,
+  getTodoByIdHttp,
+  getTodoListHttp,
+  updateSubTaskStatusHttp,
+  updateTodoHttp,
+  updateTodoStatusHttp,
+} from '@/controllers/todo.controllers';
 import express from 'express';
 
 const router = express.Router();
 
-/* GET users listing. */
-router.post('/', authMiddleware, createTodoHttp);
-router.get('/', authMiddleware, getTodoList);
+router.post('/', createTodoHttp);
+router.get('/', getTodoListHttp);
+router.get('/:id', getTodoByIdHttp);
+router.put('/:id', updateTodoHttp);
+router.delete('/:id', deleteTodoHttp);
+
+router.put('/:id/update-status', updateTodoStatusHttp);
+router.put('/:id/update-sub-status/:subId', updateSubTaskStatusHttp);
 
 export default router;

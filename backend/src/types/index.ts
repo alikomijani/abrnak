@@ -1,4 +1,4 @@
-import { Document, Schema } from 'mongoose';
+import { Document, Schema, Types } from 'mongoose';
 
 export interface AuthTokens {
   accessToken: string;
@@ -24,7 +24,7 @@ export interface IUser extends Document, ITimestamps {
   createToken(): AuthTokens;
 }
 
-export interface ISubTask {
+export interface ISubTask extends Document {
   title: string;
   isComplete: boolean;
 }
@@ -33,5 +33,5 @@ export interface ITodo extends Document, ITimestamps {
   title: string;
   description: string;
   isComplete: boolean;
-  subTasks: Array<ISubTask>;
+  subTasks: Types.DocumentArray<ISubTask>;
 }
