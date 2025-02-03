@@ -1,11 +1,11 @@
 import { TodoModel } from '@/schema/todo.schema';
-import { ISubTask, ITodo } from '@/types';
+import { ITodo } from '@/types';
 import { TodoType } from '@/validations/todo.validations';
-import { Types } from 'mongoose';
 
 export async function createTodo(params: TodoType & { user: string }) {
   try {
-    const todo = await TodoModel.create(params);
+    const todo = new TodoModel(params);
+    await todo.save();
     console.info(`Todo created: ${todo._id}`);
     return todo;
   } catch (e) {
@@ -15,7 +15,7 @@ export async function createTodo(params: TodoType & { user: string }) {
 }
 export async function findTodoByID(id: string) {
   try {
-    const todo = await TodoModel.findById(id);
+    const todo = await TodoModel.findById(id).lean();
     return todo;
   } catch (e) {
     console.error(`Failed to find todo: ${(e as Error)?.message}`);
@@ -28,19 +28,29 @@ export interface FindTodoParams {
   isComplete?: any;
   limit: number;
   offset: number;
+  search?: string;
 }
 
 export async function findTodoList(params: FindTodoParams) {
-  const { user, isComplete, limit, offset } = params;
+  const { user, isComplete, limit, offset, search } = params;
   const query: any = { user };
-  if (isComplete != undefined) {
-    query.isComplete = isComplete;
+  console.log(isComplete);
+  if (isComplete) {
+    query.isComplete = isComplete === 'true';
+  }
+  if (search) {
+    query.$or = [
+      { title: { $regex: search, $options: 'i' } }, // Case-insensitive search in titleFa
+      { description: { $regex: search, $options: 'i' } }, // Case-insensitive search in titleEn
+    ];
   }
   try {
     const todoList = await TodoModel.find(query)
-      .skip(offset)
-      .limit(limit)
+      .sort({ createdAt: -1 })
+      .skip(+offset)
+      .limit(+limit)
       .lean();
+
     const total = await TodoModel.countDocuments(query);
     return { results: todoList, total, limit, offset };
   } catch (error) {

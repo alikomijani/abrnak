@@ -53,7 +53,7 @@ export async function loginUser(
       if (!user.isActive) {
         res
           .status(StatusCodes.UNAUTHORIZED)
-          .json({ success: false, messages: ['user is deactivate!'] });
+          .json({ success: false, message: ['user is deactivate!'] });
         return;
       }
       const tokens = user.createToken();
@@ -65,7 +65,7 @@ export async function loginUser(
       console.log(e);
       res
         .status(StatusCodes.UNAUTHORIZED)
-        .json({ success: false, messages: ['Invalid credential'] });
+        .json({ success: false, message: ['Invalid credential'] });
     }
   } catch (error) {
     next(error);

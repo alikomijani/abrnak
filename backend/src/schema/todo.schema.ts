@@ -23,17 +23,24 @@ const TodoSchema = new Schema<ITodo>(
   },
   {
     timestamps: true,
+    id: true,
   }
 );
 TodoSchema.set('toJSON', {
   virtuals: true,
-  transform: function (doc, ret) {
-    delete ret.__v;
-    delete ret._id;
+  versionKey: false,
+  transform: (_doc, ret) => {
+    delete ret.id; // Remove `id`
+    return ret;
   },
 });
 TodoSchema.set('toObject', {
   virtuals: true,
+  versionKey: false,
+  transform: (_doc, ret) => {
+    delete ret.id; // Remove `id`
+    return ret;
+  },
 });
 
 export const TodoModel = mongoose.model('Todo', TodoSchema);

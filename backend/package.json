@@ -5,13 +5,14 @@
   "scripts": {
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node ./build/server.js",
-    "dev": "cross-env NODE_ENV=development nodemon --watch src   --files -r tsconfig-paths/register ./src/server.ts",
+    "dev": "npm run build && cross-env NODE_ENV=development nodemon --watch src   --files -r tsconfig-paths/register ./src/server.ts",
     "build": "rm -rf build && tsc",
     "lint": "eslint src/**/*.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^16.4.7",
     "express": "~4.16.1",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.17",
     "@types/debug": "^4.1.12",
     "@types/express": "^5.0.0",
     "@types/http-errors": "^2.0.4",

@@ -62,12 +62,13 @@ export async function getTodoListHttp(
   next: NextFunction
 ) {
   try {
-    const { isComplete, limit = 10, offset = 0 } = req.params;
+    const { isComplete, limit = 10, offset = 0, search } = req.query;
     const todoList = await findTodoList({
       isComplete,
       limit: Number(limit),
       offset: Number(offset),
       user: req.user?.id || '',
+      search: search?.toString(),
     });
     res.json(todoList);
   } catch (e) {
