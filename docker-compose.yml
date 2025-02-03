@@ -1,16 +1,21 @@
-version: '3.8'
-
 services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+      
   backend:
-    build: .
+    build: ./backend
     ports:
       - "8000:8000"
     env_file:
-      - .env
+      - ./backend/.env
     depends_on:
-      - mongo
+      - mongo_server
 
-  mongo:
+  mongo_server:
     image: mongo:6.0
     container_name: mongo_db
     volumes:

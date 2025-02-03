@@ -7,15 +7,19 @@ import {
   Card,
   CardContent,
   CircularProgress,
+  Fab,
   Grid2,
+  Stack,
   Typography,
 } from "@mui/material";
 import FetchNextPage from "@/components/FetchNextPage";
 import MobileFilter from "./MobileFilter";
 import NotFou from "@assets/404-error.jpg";
 import withSuspenseLoading from "@/components/withSuspenseLoading";
-import { lazy } from "react";
+import { lazy, useState } from "react";
 import TodoCard from "@/pages/todo/TodoCard";
+import CreateTodoModal from "./create-todo-modal";
+import { Add } from "@mui/icons-material";
 
 const PageError = withSuspenseLoading(
   lazy(() => import("@/components/PageError"))
@@ -23,6 +27,7 @@ const PageError = withSuspenseLoading(
 
 export default function TodoInfiniteView() {
   const { debouncedParams, setParams } = useSearchParams(TODO_DEFAULT_PARAMS);
+  const [open, setOpen] = useState(false);
   const { data, hasNextPage, fetchNextPage, isLoading, error, isError } =
     useInfiniteTodoList(debouncedParams);
   if (isError) {
@@ -30,7 +35,25 @@ export default function TodoInfiniteView() {
   }
   return (
     <Box>
-      <MobileFilter />
+      <Stack>
+        <Fab
+          sx={{
+            position: "fixed",
+            bottom: 20,
+          }}
+          color="primary"
+          aria-label="add"
+          onClick={() => setOpen(true)}
+        >
+          <Add />
+        </Fab>
+        <CreateTodoModal
+          mode="create"
+          open={open}
+          onClose={() => setOpen(false)}
+        />
+        <MobileFilter />
+      </Stack>
       <Grid2 spacing={1} container>
         {data?.pages[0].total === 0 && (
           <Grid2 size={12} textAlign="center">

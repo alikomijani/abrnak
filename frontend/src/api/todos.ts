@@ -188,7 +188,7 @@ export function useInfiniteTodoList(params: ToDoParams) {
       ...params,
     },
     getNextPageParam: (lastPage) => {
-      if (lastPage.total < lastPage.offset + lastPage.limit) {
+      if (lastPage.total <= lastPage.offset + lastPage.limit) {
         return undefined;
       }
       return {
